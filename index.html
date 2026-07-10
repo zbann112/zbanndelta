@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZBannClient — официальный сайт</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b12;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0e0f0;
+            line-height: 1.6;
+        }
+
+        /* ===== ХЕДЕР (как на Delta) ===== */
+        .header {
+            background: linear-gradient(160deg, #12121e, #1a1a2e);
+            border-bottom: 2px solid #2a2a4a;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.0rem;
+            font-weight: 900;
+            color: #00b4ff;
+            text-shadow: 0 0 30px #00b4ff44;
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: #ff3b3b;
+            text-shadow: 0 0 30px #ff3b3b44;
+        }
+        .nav a {
+            color: #b0b0e0;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 600;
+            font-size: 1.0rem;
+            transition: 0.2s;
+            letter-spacing: 1px;
+        }
+        .nav a:hover {
+            color: #00b4ff;
+            text-shadow: 0 0 20px #00b4ff44;
+        }
+        .btn-download-header {
+            background: linear-gradient(135deg, #00b4ff, #0066ff);
+            border: none;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.95rem;
+            box-shadow: 0 0 30px #00b4ff44;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-download-header:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px #00b4ff77;
+        }
+
+        /* ===== ГЕРОЙ (как на Delta) ===== */
+        .hero {
+            padding: 80px 40px 60px;
+            text-align: center;
+            background: radial-gradient(circle at 30% 20%, #1a1a3e, #0b0b12 70%);
+            border-bottom: 1px solid #1f1f3a;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 900;
+            color: #00b4ff;
+            text-shadow: 0 0 40px #00b4ff33;
+        }
+        .hero h1 span {
+            color: #ff3b3b;
+            text-shadow: 0 0 40px #ff3b3b33;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0da;
+            max-width: 700px;
+            margin: 16px auto 30px;
+        }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 25px 0 20px;
+        }
+        .hero-badge {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #2a2a5a;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #c0c0ec;
+            font-size: 0.95rem;
+        }
+        .hero-badge .icon {
+            margin-right: 8px;
+        }
+        .btn-download-hero {
+            background: linear-gradient(135deg, #00b4ff, #0066ff);
+            border: none;
+            padding: 16px 60px;
+            border-radius: 60px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.4rem;
+            box-shadow: 0 0 40px #00b4ff55;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn-download-hero:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 70px #00b4ff88;
+        }
+
+        /* ===== ФУНКЦИИ (сетка как на Delta) ===== */
+        .features {
+            padding: 70px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.4rem;
+            color: #00b4ff;
+            text-align: center;
+            margin-bottom: 45px;
+            text-shadow: 0 0 30px #00b4ff22;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .feature-item {
+            background: #12121e;
+            border: 1px solid #252545;
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .feature-item:hover {
+            border-color: #00b4ff;
+            box-shadow: 0 0 40px #00b4ff11;
+            transform: translateY(-8px);
+        }
+        .feature-item .icon {
+            font-size: 3.0rem;
+            margin-bottom: 10px;
+        }
+        .feature-item h3 {
+            color: #d0d0f0;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .feature-item p {
+            color: #8a8ab0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== СТАТИСТИКА (как на Delta) ===== */
+        .stats-section {
+            background: #0f0f1a;
+            border-top: 1px solid #1f1f3a;
+            border-bottom: 1px solid #1f1f3a;
+            padding: 45px 40px;
+        }
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-item {
+            background: #12121e;
+            border: 1px solid #252545;
+            border-radius: 16px;
+            padding: 20px 12px;
+        }
+        .stat-item .number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #00b4ff;
+        }
+        .stat-item .label {
+            color: #8a8ab0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ФУТЕР (как на Delta) ===== */
+        .footer {
+            background: #0a0a12;
+            padding: 30px 40px;
+            border-top: 1px solid #1a1a2e;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: #5a5a7a;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', monospace;
+        }
+        .footer .highlight {
+            color: #00b4ff;
+            text-shadow: 0 0 20px #00b4ff33;
+        }
+        .footer .inject {
+            color: #ff3b3b;
+            animation: blink-inject 2.4s infinite;
+        }
+        @keyframes blink-inject {
+            0% { opacity: 1; }
+            50% { opacity: 0.15; }
+            100% { opacity: 1; }
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 700px) {
+            .header { flex-direction: column; align-items: stretch; text-align: center; }
+            .nav a { margin: 0 10px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .hero { padding: 50px 20px; }
+            .features { padding: 40px 20px; }
+        }
+        @media (max-width: 450px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .btn-download-hero { font-size: 1.2rem; padding: 14px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ХЕДЕР -->
+    <header class="header">
+        <div class="logo">Z<span>Bann</span>Client</div>
+        <nav class="nav">
+            <a href="#">Главная</a>
+            <a href="#features">Функции</a>
+            <a href="#">Скачать</a>
+            <a href="#">Поддержка</a>
+        </nav>
+        <button class="btn-download-header" onclick="downloadClient()">▼ Скачать</button>
+    </header>
+
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+        <h1>Z<span>Bann</span>Client</h1>
+        <p>Лучший чит-клиент для Minecraft. Максимальная производительность, скрытность и удобство.</p>
+        <div class="hero-badges">
+            <span class="hero-badge"><span class="icon">✅</span> Анти-бан</span>
+            <span class="hero-badge"><span class="icon">⚡</span> Высокий FPS</span>
+            <span class="hero-badge"><span class="icon">🔒</span> Безопасность</span>
+        </div>
+        <button class="btn-download-hero" onclick="downloadClient()">🚀 Скачать ZBannClient</button>
+    </section>
+
+    <!-- ФУНКЦИИ -->
+    <section class="features" id="features">
+        <h2>⚡ Возможности</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon">🛡️</div>
+                <h3>Анти-откат</h3>
+                <p>Защита от банов и откатов на любых серверах.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🔍</div>
+                <h3>X-Ray</h3>
+                <p>Просмотр руд и сущностей через стены.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🎯</div>
+                <h3>AimBot</h3>
+                <p>Автоматическое наведение на цель.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🧊</div>
+                <h3>Fly & Speed</h3>
+                <p>Режимы полёта и ускорения.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">📡</div>
+                <h3>Радар</h3>
+                <p>Отображение всех игроков на карте.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">💀</div>
+                <h3>KillAura</h3>
+                <p>Автоматическая атака по области.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- СТАТИСТИКА -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="number">15K+</div>
+                <div class="label">Пользователей</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">4.9</div>
+                <div class="label">Рейтинг</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">99%</div>
+                <div class="label">Защита от бана</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">24/7</div>
+                <div class="label">Поддержка</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <span class="highlight">● ZBannClient v.3.7.2</span>
+        <span class="inject">◉ INJECTED</span>
+        <span>🔒 2026</span>
+    </footer>
+
+    <script>
+        function downloadClient() {
+            alert('🚀 Скачивание ZBannClient начато!\nВерсия: 3.7.2\nРазмер: 18.4 MB');
+            // Здесь можно добавить реальную ссылку на скачивание
+        }
+
+        // Анимация появления карточек при скролле
+        const features = document.querySelectorAll('.feature-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+        features.forEach(f => {
+            f.style.opacity = '0';
+            f.style.transform = 'translateY(30px)';
+            f.style.transition = '0.6s';
+            observer.observe(f);
+        });
+    </script>
+</body>
+</html>
